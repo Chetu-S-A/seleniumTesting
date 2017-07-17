@@ -4,18 +4,15 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
-import org.testng.annotations.AfterTest;
+import org.openqa.selenium.firefox.*;
+import org.testng.annotations.*;
 
 public class BrowserDriver {
 	WebDriver driver;
 	@BeforeTest
 	public void Browser_Init(){
-		System.setProperty("webdriver.gecko.driver", 
-				"geckoDriver/geckodriver.exe");
-			WebDriver driver = new FirefoxDriver();
+		System.setProperty("webdriver.gecko.driver", "geckoDriver/geckodriver.exe");
+		driver = new FirefoxDriver();
 
 	}
 	@Test
@@ -36,11 +33,8 @@ public class BrowserDriver {
 		Thread.sleep(5000);
 		driver.quit();
 */
-		Thread.sleep(5000);
-		driver.get("google.com");
-		Thread.sleep(4000);
-		driver.findElement(By.xpath("//*[@id='gs_hitf0')]")).sendKeys("selenium");
-		driver.findElement(By.xpath("//*[@id='gs_hitf0')]")).sendKeys(Keys.ENTER);
+		driver.get("https://google.com");
+		driver.findElement(By.xpath("//*[@id='lst-ib']")).sendKeys("selenium"+Keys.ENTER);
 		System.out.println("This is the title of the page "+ driver.getTitle());
 		Thread.sleep(5000);
 	}
